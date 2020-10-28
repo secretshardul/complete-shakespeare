@@ -1,5 +1,5 @@
 {
-  "name": "hello-world",
+  "name": "complete-shakespeare",
   "version": "1.2.0",
   "description": "alexa utility for quickly building skills",
   "main": "index.js",
@@ -7,10 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Amazon Alexa",
-  "license": "Apache License",
+  "license": "Apache-2.0",
   "dependencies": {
     "ask-sdk-core": "^2.7.0",
     "ask-sdk-model": "^1.19.0",
-    "aws-sdk": "^2.326.0"
+    "aws-sdk": "^2.326.0",
+    "node-fetch": "^2.6.1"
   }
 }
