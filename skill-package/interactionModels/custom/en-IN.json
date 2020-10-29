@@ -29,6 +29,12 @@
                     ]
                 },
                 {
+                    "name": "QuoteIntent",
+                    "samples": [
+                        "quote"
+                    ]
+                },
+                {
                     "name": "AMAZON.NavigateHomeIntent",
                     "samples": []
                 },

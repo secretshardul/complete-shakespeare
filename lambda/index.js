@@ -11,7 +11,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Welcome, you can say Hello or Help. Which would you like to try?';
+        const speakOutput = 'Welcome, you can say Quote or Help. Which would you like to try?';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -26,14 +26,26 @@ const HelloWorldIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
     },
     async handle(handlerInput) {
-        // const speakOutput = 'Hello World!';
-        // await api.getRandomQuote();
-
-        const speakOutput = await api.getRandomQuote();
+        const speakOutput = 'Hello World!';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .getResponse();
+    }
+};
+
+const QuoteIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'QuoteIntent';
+    },
+    async handle(handlerInput) {
+        const speakOutput = await api.getRandomQuote();
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Want to listen to another quote?')
             .getResponse();
     }
 };
@@ -149,6 +161,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         HelloWorldIntentHandler,
+        QuoteIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
