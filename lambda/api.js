@@ -71,7 +71,7 @@ async function whoSaid(phase) {
 
             paragraphs.forEach((paragraph, position) => {
                 const item = {
-                    position,
+                    position: position.toString(),
                     text: paragraph.plainText
                 };
                 console.log("Adding item to Lunr: ", JSON.stringify(item));
@@ -82,9 +82,17 @@ async function whoSaid(phase) {
         const searchResult = idx.search(phase);
         console.log("Got lunr search result");
         console.log(JSON.stringify(searchResult));
+        const match = searchResult[0];
+        const matchIndex = parseInt(match.ref, 10);
 
+        const matchParagraph = paragraphs[matchIndex];
+        const { character, text } = matchParagraph;
+        const response = `${character.charName} said this phase`;
+
+        return response;
     } catch (error) {
         console.log(error);
+        return 'Failed to find speaker';
     }
 }
 
