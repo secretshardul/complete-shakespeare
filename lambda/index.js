@@ -27,7 +27,8 @@ const HelloWorldIntentHandler = {
     },
     async handle(handlerInput) {
         const speakOutput = 'Hello World!';
-        api.trial();
+        await api.getRandomQuote();
+        await api.trial();
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
