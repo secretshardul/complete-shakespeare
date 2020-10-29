@@ -56,10 +56,12 @@ const WhoSaidIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WhoSaidIntent';
     },
     async handle(handlerInput) {
-        console.log(JSON.stringify(handlerInput.resuestEnvelope.request));
-        const phase = handlerInput.resuestEnvelope.request.intent.slots.phase.value;
-        console.log("Got phase: ", phase);
-        const speakOutput = `Brutus said ${phase}`;
+        console.log("Printing handlerInput");
+        console.log(JSON.stringify(handlerInput));
+        // console.log(JSON.stringify(handlerInput.resuestEnvelope.request));
+        // const phase = handlerInput.resuestEnvelope.request.intent.slots.phase.value;
+        // console.log("Got phase: ", phase);
+        // const speakOutput = `Brutus said ${phase}`;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
