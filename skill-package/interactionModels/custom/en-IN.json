@@ -31,7 +31,10 @@
                 {
                     "name": "QuoteIntent",
                     "samples": [
-                        "quote"
+                        "quote",
+                        "tell me a quote",
+                        "tell me a shakespeare quote",
+                        "shakespeare quote"
                     ]
                 },
                 {
