@@ -56,7 +56,8 @@ const WhoSaidIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WhoSaidIntent';
     },
     async handle(handlerInput) {
-        const speakOutput = "Brutus said this in the play Julius Caesar";
+        const phase = handlerInput.resuestEnvelope.request.intent.slots.phase.value;
+        const speakOutput = `Brutus said ${phase}`;
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
