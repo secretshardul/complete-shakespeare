@@ -14,6 +14,7 @@
     "ask-sdk-model": "^1.19.0",
     "aws-sdk": "^2.326.0",
     "graphql": "^15.4.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "react": "^17.0.1"
   }
 }
