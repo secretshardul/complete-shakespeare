@@ -3,6 +3,7 @@ const InMemoryCache = require('@apollo/client').InMemoryCache;
 const createHttpLink = require('@apollo/client').createHttpLink;
 const gql = require('@apollo/client').gql;
 const fetch = require('cross-fetch').fetch;
+const lunr = require('lunr').lunr;
 
 const client = new ApolloClient({
     link: createHttpLink({
@@ -62,6 +63,23 @@ async function whoSaid(phase) {
         const response = await client.query({ query: WHO_SAID_QUERY, variables: { phase } });
         console.log('Matching phases and characters are');
         console.log(JSON.stringify(response.data.queryParagraph));
+        const paragraphs = response.data.queryParagraph;
+
+        var idx = lunr(() => {
+            this.ref('position')
+            this.field('text')
+
+            paragraphs.forEach((paragraph, position) => {
+                this.add({
+                    position,
+                    text: paragraph.plainText
+                })
+            });
+        });
+        const searchResult = idx.search(phase);
+        console.log("Got lunr search result");
+        console.log(JSON.stringify(searchResult));
+
     } catch (error) {
         console.log(error);
     }

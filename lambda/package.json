@@ -1,21 +1,25 @@
 {
-  "name": "complete-shakespeare",
-  "version": "1.2.0",
-  "description": "alexa utility for quickly building skills",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Amazon Alexa",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "@apollo/client": "^3.2.5",
-    "ask-sdk-core": "^2.7.0",
-    "ask-sdk-model": "^1.19.0",
-    "aws-sdk": "^2.326.0",
-    "cross-fetch": "^3.0.6",
-    "graphql": "^15.4.0",
-    "node-fetch": "^2.6.1",
-    "react": "^17.0.1"
-  }
+    "name": "complete-shakespeare",
+    "version": "1.2.0",
+    "description": "alexa utility for quickly building skills",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Amazon Alexa",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@apollo/client": "^3.2.5",
+        "ask-sdk-core": "^2.7.0",
+        "ask-sdk-model": "^1.19.0",
+        "aws-sdk": "^2.326.0",
+        "cross-fetch": "^3.0.6",
+        "graphql": "^15.4.0",
+        "lunr": "^2.3.9",
+        "node-fetch": "^2.6.1",
+        "react": "^17.0.1"
+    },
+    "devDependencies": {
+        "@types/lunr": "^2.3.3"
+    }
 }
