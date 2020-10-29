@@ -1,10 +1,11 @@
 const ApolloClient = require('@apollo/client').ApolloClient;
 const InMemoryCache = require('@apollo/client').InMemoryCache;
 const gql = require('@apollo/client').gql;
-const fetch = require('node-fetch');
+const fetch = require('cross-fetch');
 
 
 const client = new ApolloClient({
+    fetch,
     uri: 'https://different-squirrel.ap-south-1.aws.cloud.dgraph.io/graphql',
     cache: new InMemoryCache()
 });
