@@ -16,6 +16,7 @@ const getQuoteQuery = gql`
     query GetRandomQuote($offset: Int = 1) {
         queryQuotation(first: 1, offset: $offset) {
             quotationText
+            location
         }
     }`
 
@@ -31,13 +32,17 @@ async function getRandomQuote() {
     try {
         const response = await client.query({ query: getQuoteQuery, variables: { offset } });
         let quote = response.data.queryQuotation[0].quotationText;
-        quote = quote.replace("<br>", " "); // Dataset contains <br> tags
-        console.log("Got quote", quote);
-        return quote;
+        let location = response.data.queryQuotation[0].location;
+        quote = quote.replace('<br>', ' '); // Dataset contains <br> tags
+
+        location = location.replace('<i>', '');
+        location = location.replace('</i>', '');
+        console.log('Got quote', quote);
+        return `${quote}    - ${location}`;
     }
     catch (error) {
-        console.log("Failed to fetch quote:", error);
-        return "API request failed";
+        console.log('Failed to fetch quote:', error);
+        return 'API request failed';
     }
 }
 
