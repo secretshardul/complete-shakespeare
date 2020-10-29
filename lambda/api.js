@@ -87,9 +87,10 @@ async function whoSaid(phase) {
 
         const matchParagraph = paragraphs[matchIndex];
         console.log('Matching paragraph: ', JSON.stringify(matchParagraph));
+        const character = matchParagraph.character.charName;
         // const { character, text } = matchParagraph;
         // const response = `${character.charName} said this phase`;
-        const resp = "Brutus said this"
+        const resp = `${character} said this`;
 
         return resp;
     } catch (error) {
