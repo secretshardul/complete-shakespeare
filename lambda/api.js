@@ -35,7 +35,7 @@ async function getRandomQuote() {
         let location = response.data.queryQuotation[0].location;
         quote = quote.replace(/<br>/g, ' '); // Replace all <br> tags
         location = location.replace(/<i>/g, ''); // Replace all <i> tags
-        location = location.replace(/<\/i >/g, ''); // Replace all </i>. \/ is escaped backslash
+        location = location.replace(/<\/i>/g, ''); // Replace all </i>. \/ is escaped backslash
 
         console.log('Got quote', quote);
         console.log('Got location', location);
