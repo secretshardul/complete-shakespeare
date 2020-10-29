@@ -4,7 +4,6 @@ const createHttpLink = require('@apollo/client').createHttpLink;
 const gql = require('@apollo/client').gql;
 const fetch = require('cross-fetch').fetch;
 
-
 const client = new ApolloClient({
     link: createHttpLink({
         uri: 'https://different-squirrel.ap-south-1.aws.cloud.dgraph.io/graphql',
@@ -27,20 +26,19 @@ function between(min, max) {
 }
 
 async function getRandomQuote() {
-    const offset = between(1, 20);
+    const QUOTE_COUNT = 1351;
+    const offset = between(0, QUOTE_COUNT);
     try {
         const response = await client.query({ query: getQuoteQuery, variables: { offset } });
-        const quote = response.data.queryQuotation[0].quotationText;
+        let quote = response.data.queryQuotation[0].quotationText;
+        quote = quote.replace("<br>", " "); // Dataset contains <br> tags
         console.log("Got quote", quote);
         return quote;
     }
     catch (error) {
         console.log("Failed to fetch quote:", error);
-        return "API request failed"
+        return "API request failed";
     }
 }
 
-
-
 module.exports = { getRandomQuote }
-
