@@ -3,7 +3,7 @@ const InMemoryCache = require('@apollo/client').InMemoryCache;
 const createHttpLink = require('@apollo/client').createHttpLink;
 const gql = require('@apollo/client').gql;
 const fetch = require('cross-fetch').fetch;
-const lunr = require('lunr').lunr;
+const lunr = require('lunr');
 
 const client = new ApolloClient({
     link: createHttpLink({
@@ -65,7 +65,7 @@ async function whoSaid(phase) {
         console.log(JSON.stringify(response.data.queryParagraph));
         const paragraphs = response.data.queryParagraph;
 
-        var idx = lunr(() => {
+        var idx = lunr(function () {
             this.ref('position')
             this.field('text')
 
