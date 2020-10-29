@@ -1,7 +1,7 @@
 const ApolloClient = require('@apollo/client').ApolloClient;
 const InMemoryCache = require('@apollo/client').InMemoryCache;
 const gql = require('@apollo/client').gql;
-const fetch = require('cross-fetch');
+const fetch = require('cross-fetch').fetch;
 
 
 const client = new ApolloClient({
