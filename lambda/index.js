@@ -26,8 +26,10 @@ const HelloWorldIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'HelloWorldIntent';
     },
     async handle(handlerInput) {
-        const speakOutput = 'Hello World!';
-        await api.getRandomQuote();
+        // const speakOutput = 'Hello World!';
+        // await api.getRandomQuote();
+
+        const speakOutput = await api.getRandomQuote();
 
         return handlerInput.responseBuilder
             .speak(speakOutput)

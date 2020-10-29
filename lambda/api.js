@@ -27,13 +27,16 @@ function between(min, max) {
 }
 
 async function getRandomQuote() {
-    const offset = 1;
+    const offset = between(1, 20);
     try {
-        const quote = await client.query({ query: getQuoteQuery, variables: { offset } });
-        console.log("Got quote", quote.data.queryQuotation[0].quotationText);
+        const response = await client.query({ query: getQuoteQuery, variables: { offset } });
+        const quote = response.data.queryQuotation[0].quotationText;
+        console.log("Got quote", quote);
+        return quote;
     }
     catch (error) {
         console.log("Failed to fetch quote:", error);
+        return "API request failed"
     }
 }
 
