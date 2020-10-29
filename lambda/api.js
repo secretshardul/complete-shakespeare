@@ -70,10 +70,13 @@ async function whoSaid(phase) {
             this.field('text')
 
             paragraphs.forEach((paragraph, position) => {
-                this.add({
+                const item = {
                     position,
                     text: paragraph.plainText
-                })
+                };
+                console.log("Adding item to Lunr: ", JSON.stringify(item));
+
+                this.add(item);
             });
         });
         const searchResult = idx.search(phase);
