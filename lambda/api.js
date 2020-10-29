@@ -93,7 +93,7 @@ async function whoSaid(phase) {
         const character = matchParagraph.character.charName;
         const work = matchParagraph.work.title;
         let text = matchParagraph.plainText;
-        text.replace(/[p]/g, ' ');
+        text.replace(/\[p\]/g, ' ');
         text.replace(/\n/g, ' ')
         console.log('Cleaned text: ', text);
         const resp = `${character} said this in the play ${work}`;
