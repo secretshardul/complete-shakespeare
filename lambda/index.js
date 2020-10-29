@@ -50,6 +50,21 @@ const QuoteIntentHandler = {
     }
 };
 
+const WhoSaidIntentHandler = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'WhoSaidIntent';
+    },
+    async handle(handlerInput) {
+        const speakOutput = "Brutus said this in the play Julius Caesar";
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Want to listen to another quote?')
+            .getResponse();
+    }
+};
+
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -162,6 +177,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         LaunchRequestHandler,
         HelloWorldIntentHandler,
         QuoteIntentHandler,
+        WhoSaidIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,

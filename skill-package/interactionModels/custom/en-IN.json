@@ -38,6 +38,19 @@
                     ]
                 },
                 {
+                    "name": "WhoSaidIntent",
+                    "slots": [
+                        {
+                            "name": "Phase",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
+                    "samples": [
+                        "who said ${Phase}",
+                        "who said the phase ${Phase}"
+                    ]
+                },
+                {
                     "name": "AMAZON.NavigateHomeIntent",
                     "samples": []
                 },
