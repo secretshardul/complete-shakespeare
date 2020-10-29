@@ -26,8 +26,11 @@ const fetch = require('node-fetch');
 //     }
 // }
 
-function trial() {
-    console.log("Trial message printed");
+async function trial() {
+    const data = await fetch("https://github.com");
+    console.log("Making API call");
+    console.log(data)
+
 }
 
 module.exports = { trial }
