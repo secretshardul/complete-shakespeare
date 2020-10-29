@@ -86,10 +86,12 @@ async function whoSaid(phase) {
         const matchIndex = parseInt(match.ref, 10);
 
         const matchParagraph = paragraphs[matchIndex];
-        const { character, text } = matchParagraph;
-        const response = `${character.charName} said this phase`;
+        console.log('Matching paragraph: ', JSON.stringify(matchParagraph));
+        // const { character, text } = matchParagraph;
+        // const response = `${character.charName} said this phase`;
+        const resp = "Brutus said this"
 
-        return response;
+        return resp;
     } catch (error) {
         console.log(error);
         return 'Failed to find speaker';
