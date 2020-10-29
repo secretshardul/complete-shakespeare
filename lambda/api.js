@@ -10,7 +10,6 @@ const client = new ApolloClient({
         uri: 'https://different-squirrel.ap-south-1.aws.cloud.dgraph.io/graphql',
         fetch
     }),
-    // uri: 'https://different-squirrel.ap-south-1.aws.cloud.dgraph.io/graphql',
     cache: new InMemoryCache()
 });
 
@@ -24,19 +23,15 @@ const getQuoteQuery = gql`
 async function getRandomQuote() {
     try {
         const quote = await client.query({ query: getQuoteQuery });
-        console.log("Got quote", quote);
+        console.log("Got quote", quote.data.queryQuotation[0]);
+
     }
     catch (error) {
         console.log("Failed to fetch quote:", error);
     }
 }
 
-async function trial() {
-    const data = await fetch("https://github.com");
-    console.log("Making API call");
-    console.log(data)
 
-}
 
-module.exports = { trial, getRandomQuote }
+module.exports = { getRandomQuote }
 
