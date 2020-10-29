@@ -55,6 +55,9 @@ const WHO_SAID_QUERY = gql`
             character {
                 charName
             }
+            work {
+                title
+            }
         }
     }`;
 
@@ -88,9 +91,12 @@ async function whoSaid(phase) {
         const matchParagraph = paragraphs[matchIndex];
         console.log('Matching paragraph: ', JSON.stringify(matchParagraph));
         const character = matchParagraph.character.charName;
-        // const { character, text } = matchParagraph;
-        // const response = `${character.charName} said this phase`;
-        const resp = `${character} said this`;
+        const work = matchParagraph.work.title;
+        let text = matchParagraph.plainText;
+        text.replace(/\n[p]/g, ' ');
+        text.replace(/\n/g, ' ')
+        console.log('Cleaned text: ', text);
+        const resp = `${character} said this in the play ${work}`;
 
         return resp;
     } catch (error) {
