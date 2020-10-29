@@ -12,7 +12,7 @@ const client = new ApolloClient({
     cache: new InMemoryCache()
 });
 
-const getQuoteQuery = gql`
+const GET_QUOTE_QUERY = gql`
     query GetRandomQuote($offset: Int = 1) {
         queryQuotation(first: 1, offset: $offset) {
             quotationText
@@ -30,7 +30,7 @@ async function getRandomQuote() {
     const QUOTE_COUNT = 1351;
     const offset = between(0, QUOTE_COUNT);
     try {
-        const response = await client.query({ query: getQuoteQuery, variables: { offset } });
+        const response = await client.query({ query: GET_QUOTE_QUERY, variables: { offset } });
         let quote = response.data.queryQuotation[0].quotationText;
         let location = response.data.queryQuotation[0].location;
         quote = quote.replace(/<br>/g, ' '); // Replace all <br> tags
@@ -47,4 +47,24 @@ async function getRandomQuote() {
     }
 }
 
-module.exports = { getRandomQuote }
+const WHO_SAID_QUERY = gql`
+    query WhoSaid($phase: String) {
+        queryParagraph(filter: {plainText: {alloftext: $phase}}) {
+            plainText
+            character {
+                charName
+            }
+        }
+    }`;
+
+async function whoSaid(phase) {
+    try {
+        const response = await client.query({ query: WHO_SAID_QUERY, variables: { phase } });
+        console.log('Matching phases and characters are');
+        console.log(JSON.stringify(response.data.queryParagraph));
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+module.exports = { getRandomQuote, whoSaid }

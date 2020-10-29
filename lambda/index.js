@@ -61,6 +61,8 @@ const WhoSaidIntentHandler = {
         console.log(JSON.stringify(handlerInput.requestEnvelope.request));
         const phase = handlerInput.requestEnvelope.request.intent.slots.phase.value;
         console.log("Got phase: ", phase);
+        await api.whoSaid(phase);
+
         const speakOutput = `Brutus said ${phase}`;
 
         return handlerInput.responseBuilder
