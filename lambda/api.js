@@ -3,7 +3,7 @@ const InMemoryCache = require('@apollo/client').InMemoryCache;
 const gql = require('@apollo/client').gql;
 
 const client = new ApolloClient({
-    uri: 'https://48p1r2roz4.sse.codesandbox.io',
+    uri: 'https://different-squirrel.ap-south-1.aws.cloud.dgraph.io/graphql',
     cache: new InMemoryCache()
 });
 
