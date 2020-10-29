@@ -14,17 +14,23 @@ const client = new ApolloClient({
 });
 
 const getQuoteQuery = gql`
-    query GetRandomQuote {
-        queryQuotation(first: 1, offset: 10) {
+    query GetRandomQuote($offset: Int = 1) {
+        queryQuotation(first: 1, offset: $offset) {
             quotationText
         }
     }`
 
-async function getRandomQuote() {
-    try {
-        const quote = await client.query({ query: getQuoteQuery });
-        console.log("Got quote", quote.data.queryQuotation[0]);
+function between(min, max) {
+    return Math.floor(
+        Math.random() * (max - min) + min
+    )
+}
 
+async function getRandomQuote() {
+    const offset = 1;
+    try {
+        const quote = await client.query({ query: getQuoteQuery, variables: { offset } });
+        console.log("Got quote", quote.data.queryQuotation[0].quotationText);
     }
     catch (error) {
         console.log("Failed to fetch quote:", error);
