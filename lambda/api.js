@@ -96,7 +96,7 @@ async function whoSaid(phase) {
         text = text.replace(/\[p\]/g, ' ');
         // text = text.replace(/\n/g, ' ');
         console.log('Cleaned text: ', text);
-        const resp = `${character} said this in the play ${work}`;
+        const resp = `${character} said this in the play ${work}. He says ${text}`;
 
         return resp;
     } catch (error) {
