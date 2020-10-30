@@ -7,7 +7,7 @@ const lunr = require('lunr');
 
 const client = new ApolloClient({
     link: createHttpLink({
-        uri: 'https://different-squirrel.ap-south-1.aws.cloud.dgraph.io/graphql',
+        uri: 'https://lowly-statement.ap-south-1.aws.cloud.dgraph.io/graphql',
         fetch
     }),
     cache: new InMemoryCache()
@@ -94,7 +94,6 @@ async function whoSaid(phase) {
         const work = matchParagraph.work.title;
         let text = matchParagraph.plainText;
         text = text.replace(/\[p\]/g, ' ');
-        // text = text.replace(/\n/g, ' ');
         console.log('Cleaned text: ', text);
         const resp = `${character} said this in the play ${work}. He says ${text}`;
 
@@ -105,4 +104,29 @@ async function whoSaid(phase) {
     }
 }
 
-module.exports = { getRandomQuote, whoSaid }
+const SEARCH_CHARACTER_QUERY = gql`
+  query SearchCharacterQuery($name: String) {
+    queryCharacter(filter: {charName: {allofterms: $name}}) {
+      charName
+      description
+      works {
+        title
+      }
+    }
+  }
+`;
+
+async function searchCharacter(name) {
+    try {
+        console.log('Searching for ', name);
+        const response = await client.query({ query: SEARCH_CHARACTER_QUERY, variables: { name } });
+        console.log('Got response', response);
+        const charData = response.data.queryCharacter[0];
+        const { charName, description, works } = charData;
+        const response = `${charName} is the ${description}`;
+    } catch (error) {
+        console.log(error);
+        return 'Failed to find this character';
+    }
+}
+module.exports = { getRandomQuote, whoSaid, searchCharacter }

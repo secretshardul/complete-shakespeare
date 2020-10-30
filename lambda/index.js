@@ -63,11 +63,28 @@ const WhoSaidIntentHandler = {
         console.log("Got phase: ", phase);
         const speakOutput = await api.whoSaid(phase);
 
-        // const speakOutput = `Brutus said ${phase}`;
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Want to try again?')
+            .getResponse();
+    }
+};
+
+const SearchCharacterIntent = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'SearchCharacterIntent';
+    },
+    async handle(handlerInput) {
+        console.log('SearchCharacterIntent triggered');
+        console.log("Printing handlerInput");
+        console.log(JSON.stringify(handlerInput.requestEnvelope.request));
+        const name = handlerInput.requestEnvelope.request.intent.slots.name.value;
+        const speakOutput = await api.searchCharacter(name);
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt('Want to listen to another quote?')
+            .reprompt('Want to try again?')
             .getResponse();
     }
 };
@@ -185,6 +202,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         HelloWorldIntentHandler,
         QuoteIntentHandler,
         WhoSaidIntentHandler,
+        SearchCharacterIntent,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
