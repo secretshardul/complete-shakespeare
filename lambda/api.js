@@ -116,6 +116,7 @@ const SEARCH_CHARACTER_QUERY = gql`
   }
 `;
 
+
 async function searchCharacter(name) {
     console.log('Searching for ', name);
     const response = await client.query({ query: SEARCH_CHARACTER_QUERY, variables: { name } });
@@ -124,4 +125,32 @@ async function searchCharacter(name) {
     const { charName, description, works } = charData;
     return `${charName} is the ${description} in the work ${works[0].title}`;
 }
-module.exports = { getRandomQuote, whoSaid, searchCharacter }
+
+const SEARCH_GENRE_QUERY = gql`
+  query SearchGenre($genre: String = "tragedies") {
+    queryGenre(filter: {genreName: {alloftext: $genre}}) {
+      genreName
+      works {
+        title
+      }
+    }
+  }
+`;
+
+async function listWorksByGenre(genre) {
+    console.log('Searching for works under', genre);
+    const response = await client.query({ query: SEARCH_GENRE_QUERY, variables: { genre } });
+    console.log('Got response', response);
+    const charData = response.data.queryGenre[0];
+    const { genreName, works } = response.data.queryGenre[0];
+    let output = `Shakespeare's works belonging to the genre ${genreName} are`;
+    works.forEach((work, index) => {
+        output = output.concat(work.title);
+        if (index !== works.size - 1) {
+            output = output.concat(', ');
+        }
+    })
+    return output;
+}
+
+module.exports = { getRandomQuote, whoSaid, searchCharacter, listWorksByGenre }

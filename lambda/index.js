@@ -95,6 +95,30 @@ const SearchCharacterIntent = {
     }
 };
 
+const ListWorksByGenreIntent = {
+    canHandle(handlerInput) {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ListWorksByGenreIntent';
+    },
+    async handle(handlerInput) {
+        let speakOutput = '';
+        try {
+            console.log('ListWorksByGenreIntent triggered');
+            console.log("Printing handlerInput");
+            console.log(JSON.stringify(handlerInput.requestEnvelope.request));
+            const genre = handlerInput.requestEnvelope.request.intent.slots.genre.value;
+            speakOutput = await api.listWorksByGenre(genre);
+        } catch (error) {
+            speakOutput = 'sorry, could not find this genre'
+        }
+
+        return handlerInput.responseBuilder
+            .speak(speakOutput)
+            .reprompt('Want to try again?')
+            .getResponse();
+    }
+};
+
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -209,6 +233,7 @@ exports.handler = Alexa.SkillBuilders.custom()
         QuoteIntentHandler,
         WhoSaidIntentHandler,
         SearchCharacterIntent,
+        ListWorksByGenreIntent,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,

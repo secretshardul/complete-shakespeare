@@ -64,6 +64,21 @@
                     ]
                 },
                 {
+                    "name": "ListWorksByGenreIntent",
+                    "slots": [
+                        {
+                            "name": "genre",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
+                    "samples": [
+                        "tell me about the {genre} of shakespeare",
+                        "list the {genre} of shakespeare",
+                        "list the works of shakespeare of the genre {genre}",
+                        "what are the works of shakespeare of the genre {genre}"
+                    ]
+                },
+                {
                     "name": "AMAZON.NavigateHomeIntent",
                     "samples": []
                 },
