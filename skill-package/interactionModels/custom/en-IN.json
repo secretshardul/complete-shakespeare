@@ -59,8 +59,8 @@
                         }
                     ],
                     "samples": [
-                        "who is {phase}",
-                        "who is the character {phase}"
+                        "who is {name}",
+                        "who is the character {name}"
                     ]
                 },
                 {
