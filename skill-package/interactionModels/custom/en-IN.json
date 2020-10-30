@@ -51,6 +51,19 @@
                     ]
                 },
                 {
+                    "name": "SearchCharacterIntent",
+                    "slots": [
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
+                    "samples": [
+                        "who is {phase}",
+                        "who is the character {phase}"
+                    ]
+                },
+                {
                     "name": "AMAZON.NavigateHomeIntent",
                     "samples": []
                 },
