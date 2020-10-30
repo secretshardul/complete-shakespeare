@@ -148,7 +148,7 @@ async function listWorksByGenre(genre) {
         switch (index) {
             case 0: output = output.concat(` ${work.title}`);
                 break;
-            case works.length - 1: output = output.concat(`and ${work.title}`);
+            case works.length - 1: output = output.concat(` and ${work.title}`);
                 break;
             default: output = output.concat(`, ${work.title}`);
         }
