@@ -122,7 +122,7 @@ async function searchCharacter(name) {
     console.log('Got response', response);
     const charData = response.data.queryCharacter[0];
     const { charName, description, works } = charData;
-    const response = `${charName} is the ${description}`;
-    return response;
+    const resp = `${charName} is the ${description}`;
+    return resp;
 }
 module.exports = { getRandomQuote, whoSaid, searchCharacter }

@@ -82,7 +82,7 @@ const SearchCharacterIntent = {
             console.log("Printing handlerInput");
             console.log(JSON.stringify(handlerInput.requestEnvelope.request));
             const name = handlerInput.requestEnvelope.request.intent.slots.name.value;
-            console.log('Got name ', name)
+            console.log('Got name', name);
             speakOutput = await api.searchCharacter(name);
         } catch (error) {
             speakOutput = 'sorry, could not find this user'
