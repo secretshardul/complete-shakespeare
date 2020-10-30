@@ -143,11 +143,14 @@ async function listWorksByGenre(genre) {
     console.log('Got response', response);
     const charData = response.data.queryGenre[0];
     const { genreName, works } = response.data.queryGenre[0];
-    let output = `Shakespeare's works belonging to the genre ${genreName} are`;
+    let output = `Shakespeare's works of the genre ${genreName} are`;
     works.forEach((work, index) => {
-        output = output.concat(work.title);
-        if (index !== works.size - 1) {
-            output = output.concat(', ');
+        switch (index) {
+            case 0: output = output.concat(` ${work.title}`);
+                break;
+            case works.size - 1: output = output.concat(`and ${work.title}`);
+                break;
+            default: output = output.concat(`, ${work.title}`);
         }
     })
     return output;

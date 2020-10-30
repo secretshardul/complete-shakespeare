@@ -72,6 +72,7 @@
                         }
                     ],
                     "samples": [
+                        "what are the {genre} of shakespeare",
                         "tell me about the {genre} of shakespeare",
                         "list the {genre} of shakespeare",
                         "list the works of shakespeare of the genre {genre}",
