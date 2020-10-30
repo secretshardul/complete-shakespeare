@@ -76,11 +76,17 @@ const SearchCharacterIntent = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'SearchCharacterIntent';
     },
     async handle(handlerInput) {
-        console.log('SearchCharacterIntent triggered');
-        console.log("Printing handlerInput");
-        console.log(JSON.stringify(handlerInput.requestEnvelope.request));
-        const name = handlerInput.requestEnvelope.request.intent.slots.name.value;
-        const speakOutput = await api.searchCharacter(name);
+        let speakOutput = '';
+        try {
+            console.log('SearchCharacterIntent triggered');
+            console.log("Printing handlerInput");
+            console.log(JSON.stringify(handlerInput.requestEnvelope.request));
+            const name = handlerInput.requestEnvelope.request.intent.slots.name.value;
+            console.log('Got name ', name)
+            speakOutput = await api.searchCharacter(name);
+        } catch (error) {
+            speakOutput = 'sorry, could not find this user'
+        }
 
         return handlerInput.responseBuilder
             .speak(speakOutput)

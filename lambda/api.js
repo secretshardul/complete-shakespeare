@@ -117,16 +117,12 @@ const SEARCH_CHARACTER_QUERY = gql`
 `;
 
 async function searchCharacter(name) {
-    try {
-        console.log('Searching for ', name);
-        const response = await client.query({ query: SEARCH_CHARACTER_QUERY, variables: { name } });
-        console.log('Got response', response);
-        const charData = response.data.queryCharacter[0];
-        const { charName, description, works } = charData;
-        const response = `${charName} is the ${description}`;
-    } catch (error) {
-        console.log(error);
-        return 'Failed to find this character';
-    }
+    console.log('Searching for ', name);
+    const response = await client.query({ query: SEARCH_CHARACTER_QUERY, variables: { name } });
+    console.log('Got response', response);
+    const charData = response.data.queryCharacter[0];
+    const { charName, description, works } = charData;
+    const response = `${charName} is the ${description}`;
+    return response;
 }
 module.exports = { getRandomQuote, whoSaid, searchCharacter }
