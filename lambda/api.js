@@ -7,6 +7,7 @@ const lunr = require('lunr');
 
 const client = new ApolloClient({
     link: createHttpLink({
+        // replace uri with your own endpoint
         uri: 'https://lowly-statement.ap-south-1.aws.cloud.dgraph.io/graphql',
         fetch
     }),
