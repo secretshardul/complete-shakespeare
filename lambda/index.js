@@ -11,7 +11,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Welcome, you can say Quote or Help. Which would you like to try?';
+        const speakOutput = 'Welcome! You can ask "who said X" or "who is Y" and I will find the character and work. I can list works by genre and can also tell you a random quote! Say help if you want me to repeat the instructions.';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -110,7 +110,7 @@ const HelpIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speakOutput = 'You can say hello to me! How can I help?';
+        const speakOutput = 'You can ask "who said X" or "who is Y" and I will find the character and work. I can list works by genre and can also tell you a random quote! Say help if you want me to repeat the instructions';
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
