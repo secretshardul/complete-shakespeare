@@ -8,7 +8,7 @@ This project is split across 2 repositories:
 2. [**complete-shakespeare**](https://github.com/secretshardul/complete-shakespeare) (current repository): Contains code for Alexa skill.
 
 ## Demo video
-[![Complete shakespeare demo](images/thumbnail.png)](https://youtu.be/CpnAH6ymal8)
+[![Complete shakespeare demo](images/thumbnail-yt.png)](https://youtu.be/CpnAH6ymal8)
 
 
 ## Architecture
