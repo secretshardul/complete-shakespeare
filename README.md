@@ -1,6 +1,9 @@
 # Complete Shakespeare Alexa skill
 ![](https://media-fastly.hackerearth.com/media/hackathon/slash-sprint/images/7af8fd52f7-cover_image_1.png)
 
+## Note: The skill is submitted to Amazon for approval. This can take upto 2 weeks. Please follow instructions below to setup the skill in your local environment.
+
+
 Alexa skill that queries the works of Shakespeare from Dgraph's Slash GraphQL database.
 
 This project is split across 2 repositories:
