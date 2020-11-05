@@ -1,23 +1,28 @@
 # Complete Shakespeare Alexa skill
 ![](https://media-fastly.hackerearth.com/media/hackathon/slash-sprint/images/7af8fd52f7-cover_image_1.png)
 
-## Note: The skill is submitted to Amazon for approval. This can take upto 2 weeks. Please follow instructions below to setup the skill in your local environment.
-
-
 Alexa skill that queries the works of Shakespeare from Dgraph's Slash GraphQL database.
 
 This project is split across 2 repositories:
 1. [**dgraph-shakespeare-data**](https://github.com/secretshardul/dgraph-shakespeare-data): Contains the RDF file and GraphQL schema needed to setup DGraph.
 2. [**complete-shakespeare**](https://github.com/secretshardul/complete-shakespeare) (current repository): Contains code for Alexa skill.
 
+## Update: the skill is live on Amazon
+![](./images/complete-shakespeare-amazon.png)
+
+[Install link](https://www.amazon.in/dp/B08MTC49FQ/ref=sr_1_1?dchild=1&keywords=complete+shakespeare&qid=1604572645&s=digital-skills&sr=1-1)
+
+
 ## Demo video
 [![Complete shakespeare demo](images/thumbnail-yt.png)](https://youtu.be/CpnAH6ymal8)
-
+The demo was recorded when the skill was pending approval. The skill is now live. You can directly test it on your Alexa device without going to the Alexa console.
 
 ## Architecture
 ![Architecture](https://lucid.app/publicSegments/view/22f57178-d91d-42ed-9755-eb46218710c5/image.png)
 
-## Instructions
+## Instructions to run code
+These steps are for building the skill from its code.
+
 ## Setup Dgraph database (optional)
 1. Follow instructions from [**dgraph-shakespeare-data**](https://github.com/secretshardul/dgraph-shakespeare-data) repository to setup your Dgraph database on Slash.
 2. Fork this repository.
