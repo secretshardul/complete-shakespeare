@@ -3,9 +3,13 @@
 
 Alexa skill that queries the works of Shakespeare from Dgraph's Slash GraphQL database.
 
-This project is split across 2 repositories:
+This project is split across 3 repositories:
 1. [**dgraph-shakespeare-data**](https://github.com/secretshardul/dgraph-shakespeare-data): Contains the RDF file and GraphQL schema needed to setup DGraph.
 2. [**complete-shakespeare**](https://github.com/secretshardul/complete-shakespeare) (current repository): Contains code for Alexa skill.
+3. [**GraphiQL explorer**](https://github.com/secretshardul/shakespeare-api)
+
+## GraphiQL explorer
+https://secretshardul.github.io/shakespeare-api/
 
 ## Update: the skill is live on Amazon
 ![](./images/complete-shakespeare-amazon.png)
